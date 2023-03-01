@@ -54,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $sql = "INSERT INTO users (id_user,name,password,email) values ('','$name', '$password', '$email') ";
     
         if (mysqli_query($conn, $sql)) {
-            echo "Cập nhật thông tin tài khoản thành công";
+            echo "<h1>Chúc mừng bạn đã đăng ký thành công!</h1><a href='/btth02/views/login.php'>Về trang chủ</a>";
         } else {
             echo "Lỗi khi cập nhật thông tin tài khoản: " . mysqli_error($conn);
         }
