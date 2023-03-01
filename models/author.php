@@ -44,7 +44,7 @@
 <body>
 <div class="row">
             <div class="col-sm">
-                <a href="add_author.php" class="btn btn-success">Thêm mới</a>
+                <a href="/btth02/controllers/add_author.php" class="btn btn-success">Thêm mới</a>
 <table>
   <thead>
     <tr>
@@ -61,7 +61,7 @@
       <td>Nguyễn Văn A</td>
       <td td>
       <td>
-        <a href="edit_author.php?id=1"><i class="fa-solid fa-pen-to-square"></i></a>
+        <a href="/btth02/controllers/edit_author.php?id=1"><i class="fa-solid fa-pen-to-square"></i></a>
       </td>
       <td>
         <a href=""><i class="fa-solid fa-trash"></i></a>
@@ -72,7 +72,7 @@
       <td>Trần Thị B</td>
       <td td>
       <td>
-                                <a href="edit_author.php?id=1"><i class="fa-solid fa-pen-to-square"></i></a>
+                                <a href="/btth02/controllers/edit_author.php?id=1"><i class="fa-solid fa-pen-to-square"></i></a>
                             </td>
                             <td>
                                 <a href=""><i class="fa-solid fa-trash"></i></a>

@@ -26,7 +26,7 @@
                     <a class="nav-link active" aria-current="page" href="./">Trang chủ</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="./login.php">Đăng nhập</a>
+                    <a class="nav-link" href="views/login.php">Đăng nhập</a>
                     </li>
                 </ul>
                 <form class="d-flex" role="search">
@@ -72,7 +72,7 @@
                     <img src="images/songs/cayvagio.jpg" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title text-center">
-                            <a href="detail.php" class="text-decoration-none">Cây, lá và gió</a>
+                            <a href="/btth02/views/detail.php" class="text-decoration-none">Cây, lá và gió</a>
                         </h5>
                     </div>
                 </div>
