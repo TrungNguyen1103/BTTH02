@@ -7,7 +7,7 @@
     <title>Music for Life</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="css/style_login.css">
+    <link rel="stylesheet" href="/BTTH02/assets/css/style_login.css">
 </head>
 <body>
     <header>
@@ -73,7 +73,7 @@
                     </div>
                     <div class="card-footer">
                         <div class="d-flex justify-content-center ">
-                            Don't have an account?<a href="/btth02/views/admin/register.php" class="text-warning text-decoration-none">Sign Up</a>
+                            Don't have an account?<a href="/BTTH02/views/admin/register.php" class="text-warning text-decoration-none">Sign Up</a>
                         </div>
                         <div class="d-flex justify-content-center">
                             <a href="#" class="text-warning text-decoration-none">Forgot your password?</a>

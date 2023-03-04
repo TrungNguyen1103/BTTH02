@@ -54,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $sql = "INSERT INTO users (id_user,name,password,email) values ('','$name', '$password', '$email') ";
     
         if (mysqli_query($conn, $sql)) {
-            echo "<h1>Chúc mừng bạn đã đăng ký thành công!</h1><a href='/btth02/views/login.php'>Về trang chủ</a>";
+            echo "<h1>Chúc mừng bạn đã đăng ký thành công!</h1><a href='/btth02/views/admin/login.php'>Về trang chủ</a>";
         } else {
             echo "Lỗi khi cập nhật thông tin tài khoản: " . mysqli_error($conn);
         }
@@ -66,7 +66,7 @@ mysqli_close($conn);
 <html>
 <head>
 	<title>Đăng ký tài khoản</title>
-    <link rel="stylesheet" href="/btth02/css/style_regiser.css">
+    <link rel="stylesheet" href="/btth02/assets/css/style_regiser.css">
 </head>
 <body>
 	<form action="register.php" method="post">
