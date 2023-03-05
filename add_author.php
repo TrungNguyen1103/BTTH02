@@ -22,13 +22,13 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active fw-bold" aria-current="page" href="./">Trang chủ</a>
+                        <a class="nav-link" aria-current="page" href="./">Trang chủ</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="../index.php">Trang ngoài</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="category.php">Thể loại</a>
+                        <a class="nav-link active fw-bold" href="category.php">Thể loại</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="author.php">Tác giả</a>
@@ -42,66 +42,14 @@
         </nav>
 
     </header>
-    <main class="container mt-5 mb-5">
-        <!-- <h3 class="text-center text-uppercase mb-3 text-primary">CẢM NHẬN VỀ BÀI HÁT</h3> -->
-        <div class="row">
-            <div class="col-sm-3">
-                <div class="card mb-2" style="width: 100%;">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">
-                            <a href="" class="text-decoration-none">Người dùng</a>
-                        </h5>
-
-                        <h5 class="h1 text-center">
-                            110
-                        </h5>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-3">
-                <div class="card mb-2" style="width: 100%;">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">
-                            <a href="" class="text-decoration-none">Thể loại</a>
-                        </h5>
-
-                        <h5 class="h1 text-center">
-                            10
-                        </h5>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-3">
-                <div class="card mb-2" style="width: 100%;">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">
-                            <a href="" class="text-decoration-none">Tác giả</a>
-                        </h5>
-
-                        <h5 class="h1 text-center">
-                            20
-                        </h5>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-3">
-                <div class="card mb-2" style="width: 100%;">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">
-                            <a href="" class="text-decoration-none">Bài viết</a>
-                        </h5>
-
-                        <h5 class="h1 text-center">
-                            110
-                        </h5>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
+    <h1>Thêm mới tác giả</h1>
+	<form method="POST" action="process_author.php">
+		<label for="name">Tên tác giả:</label>
+		<input type="text" id="name" name="name" required><br><br>
+		<label for="avatar">Hình ảnh:</label>
+        <input type="file" name="fileToUpload" id="fileToUpload">
+    <input type="submit" value="Upload Image" name="submit">
+	</form>
     <footer class="bg-white d-flex justify-content-center align-items-center border-top border-secondary  border-2" style="height:80px">
         <h4 class="text-center text-uppercase fw-bold">TLU's music garden</h4>
     </footer>

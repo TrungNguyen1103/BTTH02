@@ -22,13 +22,13 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active fw-bold" aria-current="page" href="./">Trang chủ</a>
+                        <a class="nav-link" aria-current="page" href="./">Trang chủ</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="../index.php">Trang ngoài</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="category.php">Thể loại</a>
+                        <a class="nav-link active fw-bold" href="category.php">Thể loại</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="author.php">Tác giả</a>
@@ -42,66 +42,79 @@
         </nav>
 
     </header>
-    <main class="container mt-5 mb-5">
-        <!-- <h3 class="text-center text-uppercase mb-3 text-primary">CẢM NHẬN VỀ BÀI HÁT</h3> -->
-        <div class="row">
-            <div class="col-sm-3">
-                <div class="card mb-2" style="width: 100%;">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">
-                            <a href="" class="text-decoration-none">Người dùng</a>
-                        </h5>
 
-                        <h5 class="h1 text-center">
-                            110
-                        </h5>
-                    </div>
-                </div>
-            </div>
+<head>
+	<title>Thêm mới bài viết</title>
+	<style>
+		form {
+			width: 50%;
+			margin: 0 auto;
+			text-align: center;
+			padding: 20px;
+			border: 1px solid #ccc;
+			border-radius: 10px;
+		}
 
-            <div class="col-sm-3">
-                <div class="card mb-2" style="width: 100%;">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">
-                            <a href="" class="text-decoration-none">Thể loại</a>
-                        </h5>
+		label {
+			display: block;
+			margin-bottom: 10px;
+		}
 
-                        <h5 class="h1 text-center">
-                            10
-                        </h5>
-                    </div>
-                </div>
-            </div>
+		input[type="text"],
+		select,
+		textarea {
+			width: 100%;
+			padding: 10px;
+			margin-bottom: 20px;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+			box-sizing: border-box;
+			font-size: 16px;
+		}
 
-            <div class="col-sm-3">
-                <div class="card mb-2" style="width: 100%;">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">
-                            <a href="" class="text-decoration-none">Tác giả</a>
-                        </h5>
+		textarea {
+			height: 150px;
+		}
 
-                        <h5 class="h1 text-center">
-                            20
-                        </h5>
-                    </div>
-                </div>
-            </div>
+		input[type="submit"] {
+			background-color: #4CAF50;
+			color: #fff;
+			border: none;
+			padding: 10px 20px;
+			cursor: pointer;
+			border-radius: 5px;
+			font-size: 16px;
+		}
 
-            <div class="col-sm-3">
-                <div class="card mb-2" style="width: 100%;">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">
-                            <a href="" class="text-decoration-none">Bài viết</a>
-                        </h5>
+		input[type="submit"]:hover {
+			background-color: #3e8e41;
+		}
+	</style>
+</head>
+<body>
+	<form action="add_post.php" method="POST" enctype="multipart/form-data">
+		<label for="title">Tiêu đề:</label>
+		<input type="text" name="title" required>
 
-                        <h5 class="h1 text-center">
-                            110
-                        </h5>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
+		<label for="author">Tác giả:</label>
+		<select name="author" required>
+			<option value="">-- Chọn tác giả --</option>
+			<option value="1">Nguyễn Văn A</option>
+			<option value="2">Trần Thị B</option>
+			<option value="3">Lê Văn C</option>
+		</select>
+
+		<label for="content">Nội dung:</label>
+		<textarea name="content" required></textarea>
+
+		<label for="image">Hình ảnh:</label>
+		<input type="file" name="image" accept="image/*" required>
+
+		<input type="submit" value="Thêm mới">
+	</form>
+</body>
+
+
     <footer class="bg-white d-flex justify-content-center align-items-center border-top border-secondary  border-2" style="height:80px">
         <h4 class="text-center text-uppercase fw-bold">TLU's music garden</h4>
     </footer>
