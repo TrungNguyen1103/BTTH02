@@ -1,19 +1,6 @@
 <?php
-// declare(strict_types = 1);                                // Use strict types
-// require '/BTTH02/config/database-connection.php';               // Create PDO object
-// require '/BTTH02/config/functions.php';                         // Include functions
-// Kiểm tra xem người dùng đã nhấp vào nút "Đăng ký" chưa
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "btth01_cse485";
 
-$conn = mysqli_connect($servername, $username, $password, $dbname);
-
-// Kiểm tra kết nối
-if (!$conn) {
-    die("Kết nối đến cơ sở dữ liệu thất bại: " . mysqli_connect_error());
-}
+require 'database-connection.php';               // Create PDO object
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Lấy thông tin đăng ký từ biểu mẫu và kiểm tra tính hợp lệ của chúng
     $name = $_POST['name'];
@@ -26,7 +13,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Nếu bất kỳ trường nào trống, hiển thị thông báo lỗi
         echo "Vui lòng điền đầy đủ thông tin đăng ký";
     }
-    if (mysqli_num_rows(mysqli_query($conn,"SELECT name FROM users WHERE name='$name'")) > 0){
+
+    if (mysqli_num_rows(mysqli_query($conn,"SELECT username FROM users WHERE username='$name'")) > 0){
         echo "Tên đăng nhập này đã có người dùng. Vui lòng chọn tên đăng nhập khác. <a href='javascript: history.go(-1)'>Trở lại</a>";
         exit;
     }
@@ -46,12 +34,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($password !== $confirm_password) {
         // Nếu mật khẩu không khớp, hiển thị thông báo lỗi
         echo "Mật khẩu và xác nhận mật khẩu không khớp";
+        // $confirm_password = md5($password);
+
     }
 
     else 
     {
         // Nếu thông tin hợp lệ, cập nhật thông tin tài khoản người dùng trong cơ sở dữ liệu
-        $sql = "INSERT INTO users (id_user,name,password,email) values ('','$name', '$password', '$email') ";
+        $sql = "INSERT INTO users (id_user,username,password,email) values ('','$name', '$password', '$email') ";
     
         if (mysqli_query($conn, $sql)) {
             echo "<h1>Chúc mừng bạn đã đăng ký thành công!</h1><a href='/btth02/views/admin/login.php'>Về trang chủ</a>";
@@ -60,7 +50,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 }
-mysqli_close($conn);
 ?>
 <!DOCTYPE html>
 <html>

@@ -1,3 +1,14 @@
+<?
+// require 'database-connection.php';               // Create PDO object
+// if($_SESSION['login']){
+//     header("Location:login.php");
+// }
+// if($_SESSION['login'] && $_SESSION['login'] != 'admin'){
+//     header("Location:/BTTH02/index.php");
+// }
+// global $conn;
+// $result = mysqli_query($conn,"SELECT * FROM users");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -100,6 +111,7 @@
                     </div>
                 </div>
             </div>
+            <a href="logout">logout</a>
         </div>
     </main>
     <footer class="bg-white d-flex justify-content-center align-items-center border-top border-secondary  border-2" style="height:80px">

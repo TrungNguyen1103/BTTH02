@@ -1,3 +1,55 @@
+<?php
+// Xử lý đăng nhập
+// Khai báo sử dụng session
+session_start();
+
+// Khai báo utf-8 để hiển thị được tiếng việt
+header('Content-Type: text/html; charset=UTF-8');
+
+// Xử lý đăng nhập
+if (isset($_POST['dangnhap'])) {
+    // Kết nối tới database
+  include('database-connection.php');
+
+    // Lấy dữ liệu nhập vào
+    $username = addslashes($_POST['username']);
+    $password = addslashes($_POST['password']);
+    // Kiểm tra tài khoản admin
+    if (!$username || !$password) {
+        echo "Vui lòng nhập đầy đủ tên đăng nhập và mật khẩu. <a href='javascript: history.go(-1)'>Trở lại</a>";
+        exit;
+    }
+          
+    //Kiểm tra tên đăng nhập có tồn tại không
+    $query = mysqli_query($conn,"SELECT username,password FROM users WHERE username='$username' ");
+    if (mysqli_num_rows($query) == 0) {
+        echo "Tên đăng nhập này không tồn tại. Vui lòng kiểm tra lại. <a href='javascript: history.go(-1)'>Trở lại</a>";
+        exit;
+    }
+     
+    //Lấy mật khẩu trong database ra
+    $row = mysqli_fetch_array($query);
+     
+    //So sánh 2 mật khẩu có trùng khớp hay không
+    if ($password != $row['password']) {
+        echo "Mật khẩu không đúng. Vui lòng nhập lại. <a href='javascript: history.go(-1)'>Trở lại</a>";
+        exit;
+    }
+     
+    //Lưu tên đăng nhập
+
+    if($_SESSION['username'] = $username &&    $_SESSION['role'] = 'admin'){
+        echo "Xin chào " . $username . ". Bạn đã đăng nhập thành công. <a href='index.php'>Về trang chủ</a>";
+    }
+   if($_SESSION['username'] = $username && $_SESSION['role'] = 'user'){
+    echo "Xin chào " . $username . ". Bạn đã đăng nhập thành công. <a href='/BTTH02/index.php'>Về trang chủ</a>";
+
+}
+}
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,7 +76,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="./">Trang chủ</a>
+                    <a class="nav-link" aria-current="page" href="/BTTH02/index.php">Trang chủ</a>
                     </li>
                     <li class="nav-item">
                     <a class="nav-link active" href="./login.php">Đăng nhập</a>
@@ -52,22 +104,24 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <form>
+                        <form method="POST" id="formSignin" onsubmit="return false;>
+                        
+                        
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="txtUser"><i class="fas fa-user"></i></span>
-                                <input type="text" class="form-control" placeholder="username" >
+                                <input type="text" class="form-control" name="username" placeholder="Tai khoan" >
                             </div>
 
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="txtPass"><i class="fas fa-key"></i></span>
-                                <input type="text" class="form-control" placeholder="password" >
+                                <input type="text" class="form-control" name="password" placeholder="Mat khau" >
                             </div>
                             
                             <div class="row align-items-center remember">
                                 <input type="checkbox">Remember Me
                             </div>
                             <div class="form-group">
-                                <input type="submit" value="Login" class="btn float-end login_btn">
+                                <input type="submit" name="dangnhap" value="Dang Nhap" class="btn float-end login_btn">
                             </div>
                         </form>
                     </div>

@@ -1,3 +1,10 @@
+<?php
+// require 'database-connection.php';
+// global $conn;
+// if($_SESSION['login']){
+//     header("Location:/BTTH02/views/admin/login.php");
+// }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,7 +30,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="./">Trang chủ</a>
+                    <a class="nav-link active" aria-current="page" href=".">Trang chủ</a>
                     </li>
                     <li class="nav-item">
                     <a class="nav-link" href="views/admin/login.php">Đăng nhập</a>
@@ -121,6 +128,7 @@
                     </div>
                 </div>
             </div>
+            <a href="/BTTH02/views/admin/logout.php">Logout</a>
         </div>
     </main>
     <footer class="bg-white d-flex justify-content-center align-items-center border-top border-secondary  border-2" style="height:80px">
