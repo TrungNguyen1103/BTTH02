@@ -1,54 +1,37 @@
 <?php
-// Xử lý đăng nhập
-// Khai báo sử dụng session
-session_start();
-
-// Khai báo utf-8 để hiển thị được tiếng việt
-header('Content-Type: text/html; charset=UTF-8');
-
-// Xử lý đăng nhập
-if (isset($_POST['dangnhap'])) {
-    // Kết nối tới database
-  include('database-connection.php');
-
-    // Lấy dữ liệu nhập vào
-    $username = addslashes($_POST['username']);
-    $password = addslashes($_POST['password']);
-    // Kiểm tra tài khoản admin
-    if (!$username || !$password) {
-        echo "Vui lòng nhập đầy đủ tên đăng nhập và mật khẩu. <a href='javascript: history.go(-1)'>Trở lại</a>";
-        exit;
-    }
-          
-    //Kiểm tra tên đăng nhập có tồn tại không
-    $query = mysqli_query($conn,"SELECT username,password FROM users WHERE username='$username' ");
-    if (mysqli_num_rows($query) == 0) {
-        echo "Tên đăng nhập này không tồn tại. Vui lòng kiểm tra lại. <a href='javascript: history.go(-1)'>Trở lại</a>";
-        exit;
-    }
-     
-    //Lấy mật khẩu trong database ra
-    $row = mysqli_fetch_array($query);
-     
-    //So sánh 2 mật khẩu có trùng khớp hay không
-    if ($password != $row['password']) {
-        echo "Mật khẩu không đúng. Vui lòng nhập lại. <a href='javascript: history.go(-1)'>Trở lại</a>";
-        exit;
-    }
-     
-    //Lưu tên đăng nhập
-
-    if($_SESSION['username'] = $username &&    $_SESSION['role'] = 'admin'){
-        echo "Xin chào " . $username . ". Bạn đã đăng nhập thành công. <a href='index.php'>Về trang chủ</a>";
-    }
-   if($_SESSION['username'] = $username && $_SESSION['role'] = 'user'){
-    echo "Xin chào " . $username . ". Bạn đã đăng nhập thành công. <a href='/BTTH02/index.php'>Về trang chủ</a>";
-
-}
-}
-
-
-
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            $user   = $_POST['username'];
+            $password  = $_POST['password'];
+            // Kiểm
+                // Kiểm tra Tài khoản nó đã TỒN TẠI CHƯA
+                try{
+                    $conn = mysqli_connect('localhost','root','','btth01_cse485');
+                }catch(Exception $e){
+                    echo $e->getMessage();
+                }
+                $select_sql = "SELECT * FROM users WHERE username = '$user' OR email='$user'";
+                $result_sql = mysqli_query($conn,$select_sql);
+                if(mysqli_num_rows($result_sql) > 0){
+                    $row = mysqli_fetch_assoc($result_sql);
+                    $password_saved = $row['password'];
+                    if(password_verify($password, $password_saved) ){
+                        // Tạo phiên
+                        session_start();
+                        $_SESSION['user'] = $user;
+                        $_SESSION['role'] = $row['role'];
+                        if($_SESSION['role'] == 'admin'){
+                            header("Location: admin.php");
+                        }else{
+                            // Chuyển hướng
+                        header("Location: /btth02/index.php");
+                        }
+                    }else{
+                        echo "<p style='color:red'>Vui lòng kiểm tra mật khẩu</p>"; 
+                    }
+                }else{
+                    echo "<p style='color:red'>Tài khoản không tồn tại. Vui lòng kiểm tra lại</p>"; 
+                }
+            }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -104,19 +87,15 @@ if (isset($_POST['dangnhap'])) {
                         </div>
                     </div>
                     <div class="card-body">
-                        <form method="POST" id="formSignin" onsubmit="return false;>
-                        
-                        
+                        <form action="login.php" method="POST" >
                             <div class="input-group mb-3">
-                                <span class="input-group-text" id="txtUser"><i class="fas fa-user"></i></span>
+                                <span class="input-group-text" id=""><i class="fas fa-user"></i></span>
                                 <input type="text" class="form-control" name="username" placeholder="Tai khoan" >
                             </div>
-
                             <div class="input-group mb-3">
-                                <span class="input-group-text" id="txtPass"><i class="fas fa-key"></i></span>
+                                <span class="input-group-text" id=""><i class="fas fa-key"></i></span>
                                 <input type="text" class="form-control" name="password" placeholder="Mat khau" >
                             </div>
-                            
                             <div class="row align-items-center remember">
                                 <input type="checkbox">Remember Me
                             </div>
